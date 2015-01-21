@@ -24,9 +24,13 @@ vowels = ['a', 'e', 'i', 'o', 'u']
 consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v',
               'w', 'x', 'z', 'y']
 
-letterProbabilities = dict([('a', 0), ('b', 0), ('c', 0), ('d', 0), ('e', 0), ('f', 0), ('g', 0), ('h', 0), ('i', 0), ('j', 0),
-                ('k', 0), ('l', 0), ('m', 0), ('n', 0), ('o', 0), ('p', 0), ('q', 0), ('r', 0), ('s', 0), ('t', 0),
-                ('u', 0), ('v', 0), ('w', 0), ('x', 0), ('y', 0), ('z', 0)])
+letterProbabilities2 = dict([('a', 1), ('b', 2), ('c', 3), ('d', 0), ('e', 0), ('f', 0), ('g', 0), ('h', 0), ('i', 0),
+                            ('j', 0), ('k', 0), ('l', 4), ('m', 0), ('n', 0), ('o', 0), ('p', 0), ('q', 0), ('r', 0),
+                            ('s', 0), ('t', 0), ('u', 5), ('v', 0), ('w', 0), ('x', 0), ('y', 0), ('z', 0)])
+
+letterProbabilities = {'a': 1, 'b': 2, 'c': 3, 'd': 0, 'e': 0, 'f': 0, 'g': 0, 'h': 0, 'i': 0,
+                       'j': 0, 'k': 0, 'l': 4, 'm': 0, 'n': 0, 'o': 0, 'p': 0, 'q': 0, 'r': 0,
+                       's': 0, 't': 0, 'u': 5, 'v': 0, 'w': 0, 'x': 0, 'y': 0, 'z': 0}
 
 
 def function():
@@ -34,7 +38,7 @@ def function():
     "print(length)"
     word = ''
     for i in range(0, length):
-        value = random()
+        value = random.random()
         if i == 0:
             letter = letters[random.randrange(0, 25)]
         elif isconsonant(letter):
@@ -43,6 +47,9 @@ def function():
             letter = consonants[random.randrange(0, len(consonants))]
         word += letter
     print(word + '\n')
+    sort2(letterProbabilities, letters, 5)
+    for key, value in sort2(letterProbabilities.items(), letters, 5):
+        print(key + ": " + str(value))
     return None
 
 
@@ -52,7 +59,7 @@ def func():
 
 
 def sort(dictionary):
-    sorted = dictionary
+    arr = dictionary
     i = 0
     j = i + 1
     while i < len(sorted):
@@ -67,19 +74,23 @@ def sort(dictionary):
 
 
 def sort2(dictionary, array, randomValue):
-    sorted = array
+    arr = array
 
     i = 0
+    print(dictionary['a'])
     j = i + 1
-    while i < len(sorted):
+    while i < len(arr):
         i += 1
-        while j < len(sorted):
+        while j < len(arr):
             j += 1
-            if dictionary[sorted[i]] < dictionary[sorted[j]] and i != j:
-                temp = dictionary[sorted[j]]
-                dictionary[sorted[j]] = dictionary[sorted[i]]
-                dictionary[sorted[i]] = temp
-    return sorted
+            print(str(dictionary[arr[i]]))
+            "if the letter probability value is less than the previous letter probability value," \
+                " move it toward the end of the fucking dictionary"
+            if dictionary[arr[i]] < dictionary[arr[j]] and i != j:
+                temp = dictionary[arr[j]]
+                dictionary[arr[j]] = dictionary[arr[i]]
+                dictionary[arr[i]] = temp
+    return dictionary
 
 
 def nextletter(letter):
