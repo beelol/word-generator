@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/wordgenerator.iml" filepath="$PROJECT_DIR$/.idea/wordgenerator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/word-generator.iml" filepath="$PROJECT_DIR$/.idea/word-generator.iml" />
     </modules>
   </component>
 </project>
-
