@@ -1,6 +1,26 @@
 __author__ = 'Baal'
 import random
 
+class Letter:
+    character = ''
+    value = 0.0
+
+    def __init__(self, character, value):
+        self.character = character
+        self.value = value
+
+    def isconsonant(self):
+        if character == 'b' or character == 'c' or character == 'd' or character == 'f' or character == 'g' or character == 'h' or character == 'j' or character == 'k' or character == 'l' or \
+                        character == 'm' or character == 'n' or character == 'p' or character == 'q' or character == 'r' or \
+                        character == 's' or character == 't' or character == 'v' or character == 'w' or character == 'x' or character == 'z':
+            return True
+        return False
+
+    def isvowel(self):
+        if character == 'a' or character == 'e' or character == 'i' or character == 'o' or character == 'u' or character == 'y':
+            return True
+        return False
+
 
 def isconsonant(a):
     if a == 'b' or a == 'c' or a == 'd' or a == 'f' or a == 'g' or a == 'h' or a == 'j' or a == 'k' or a == 'l' or \
@@ -18,6 +38,35 @@ def isvowel(a):
 
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
            'w', 'x', 'y', 'z']
+
+a = Letter('a', 0.0)
+b = Letter('b', 0.0)
+c = Letter('c', 0.0)
+d = Letter('d', 0.0)
+e = Letter('e', 0.0)
+f = Letter('f', 0.0)
+g = Letter('g', 0.0)
+h = Letter('h', 0.0)
+i = Letter('i', 0.0)
+j = Letter('j', 0.0)
+k = Letter('k', 0.0)
+l = Letter('l', 0.0)
+m = Letter('m', 0.0)
+n = Letter('n', 0.0)
+o = Letter('o', 0.0)
+p = Letter('p', 0.0)
+q = Letter('q', 0.0)
+r = Letter('r', 0.0)
+s = Letter('s', 0.0)
+t = Letter('t', 0.0)
+u = Letter('u', 0.0)
+v = Letter('v', 0.0)
+w = Letter('w', 0.0)
+x = Letter('x', 0.0)
+y = Letter('y', 0.0)
+z = Letter('z', 0.0)
+
+letterList = [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z]
 
 vowels = ['a', 'e', 'i', 'o', 'u']
 
