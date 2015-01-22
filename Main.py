@@ -1,25 +1,46 @@
 __author__ = 'Baal'
 import random
 
+
 class Letter:
     character = ''
-    value = 0.0
+    probability = 0.0
 
-    def __init__(self, character, value):
+    def __init__(self, character, probability):
         self.character = character
-        self.value = value
+        self.probability = probability
 
     def isconsonant(self):
-        if character == 'b' or character == 'c' or character == 'd' or character == 'f' or character == 'g' or character == 'h' or character == 'j' or character == 'k' or character == 'l' or \
-                        character == 'm' or character == 'n' or character == 'p' or character == 'q' or character == 'r' or \
-                        character == 's' or character == 't' or character == 'v' or character == 'w' or character == 'x' or character == 'z':
+        if self.character == 'b' or self.character == 'c' or self.character == 'd' or self.character == 'f' or \
+                        self.character == 'g' or self.character == 'h' or self.character == 'j' or self.character == 'k' \
+                or self.character == 'l' or self.character == 'm' or self.character == 'n' or self.character == 'p' \
+                or self.character == 'q' or self.character == 'r' or self.character == 's' or self.character == 't' \
+                or self.character == 'v' or self.character == 'w' or self.character == 'x' or self.character == 'z':
             return True
         return False
 
+
     def isvowel(self):
-        if character == 'a' or character == 'e' or character == 'i' or character == 'o' or character == 'u' or character == 'y':
+        if self.character == 'a' or self.character == 'e' or self.character == 'i' or self.character == 'o' or \
+                        self.character == 'u' or self.character == 'y':
             return True
         return False
+
+
+    def __repr__(self):
+        return self.probability
+
+
+    def __str__(self):
+        return self.character + ": " + str(self.probability)
+
+
+    def __gt__(self, other):
+        """
+
+        :type other: Letter
+        """
+        return self.probability > other.probability
 
 
 def isconsonant(a):
@@ -36,8 +57,11 @@ def isvowel(a):
     return False
 
 
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-           'w', 'x', 'y', 'z']
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+           'v', 'w', 'x', 'y', 'z']
+
+probabilities = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
 a = Letter('a', 0.0)
 b = Letter('b', 0.0)
@@ -50,18 +74,18 @@ h = Letter('h', 0.0)
 i = Letter('i', 0.0)
 j = Letter('j', 0.0)
 k = Letter('k', 0.0)
-l = Letter('l', 0.0)
+l = Letter('l', 0.3)
 m = Letter('m', 0.0)
-n = Letter('n', 0.0)
-o = Letter('o', 0.0)
+n = Letter('n', 0.1)
+o = Letter('o', 0.4)
 p = Letter('p', 0.0)
 q = Letter('q', 0.0)
-r = Letter('r', 0.0)
+r = Letter('r', 0.2)
 s = Letter('s', 0.0)
 t = Letter('t', 0.0)
 u = Letter('u', 0.0)
 v = Letter('v', 0.0)
-w = Letter('w', 0.0)
+w = Letter('w', 0.5)
 x = Letter('x', 0.0)
 y = Letter('y', 0.0)
 z = Letter('z', 0.0)
@@ -73,18 +97,10 @@ vowels = ['a', 'e', 'i', 'o', 'u']
 consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v',
               'w', 'x', 'z', 'y']
 
-letterProbabilities2 = dict([('a', 1), ('b', 2), ('c', 3), ('d', 0), ('e', 0), ('f', 0), ('g', 0), ('h', 0), ('i', 0),
-                            ('j', 0), ('k', 0), ('l', 4), ('m', 0), ('n', 0), ('o', 0), ('p', 0), ('q', 0), ('r', 0),
-                            ('s', 0), ('t', 0), ('u', 5), ('v', 0), ('w', 0), ('x', 0), ('y', 0), ('z', 0)])
-
-letterProbabilities = {'a': 1, 'b': 2, 'c': 3, 'd': 0, 'e': 0, 'f': 0, 'g': 0, 'h': 0, 'i': 0,
-                       'j': 0, 'k': 0, 'l': 4, 'm': 0, 'n': 0, 'o': 0, 'p': 0, 'q': 0, 'r': 0,
-                       's': 0, 't': 0, 'u': 5, 'v': 0, 'w': 0, 'x': 0, 'y': 0, 'z': 0}
-
 
 def function():
     length = random.randrange(4, 8)
-    "print(length)"
+    print(letterList[1])
     word = ''
     for i in range(0, length):
         value = random.random()
@@ -96,9 +112,9 @@ def function():
             letter = consonants[random.randrange(0, len(consonants))]
         word += letter
     print(word + '\n')
-    sort2(letterProbabilities, letters, 5)
-    for key, value in sort2(letterProbabilities.items(), letters, 5):
-        print(key + ": " + str(value))
+
+    for letter in shortbubblesort(letterList):
+        print(letter.character + ": " + str(letter.probability))
     return None
 
 
@@ -107,44 +123,25 @@ def func():
         print(letter + " Vowel: " + str(isvowel(letter)) + " Consonant: " + str(isconsonant(letter)))
 
 
-def sort(dictionary):
-    arr = dictionary
-    i = 0
-    j = i + 1
-    while i < len(sorted):
-        i += 1
-        while j < len(sorted):
-            j += 1
-            if sorted[i] > sorted[j] and i != j:
-                temp = sorted[j]
-                sorted[j] = sorted[i]
-                sorted[i] = temp
-    return sorted
-
-
-def sort2(dictionary, array, randomValue):
-    arr = array
-
-    i = 0
-    print(dictionary['a'])
-    j = i + 1
-    while i < len(arr):
-        i += 1
-        while j < len(arr):
-            j += 1
-            print(str(dictionary[arr[i]]))
-            "if the letter probability value is less than the previous letter probability value," \
-                " move it toward the end of the fucking dictionary"
-            if dictionary[arr[i]] < dictionary[arr[j]] and i != j:
-                temp = dictionary[arr[j]]
-                dictionary[arr[j]] = dictionary[arr[i]]
-                dictionary[arr[i]] = temp
-    return dictionary
+def shortbubblesort(alist):
+    array = alist
+    exchanges = True
+    passnum = len(array) - 1
+    while passnum > 0 and exchanges:
+        exchanges = False
+        for i in range(passnum):
+            if array[i] < array[i + 1]:
+                exchanges = True
+                temp = array[i]
+                array[i] = array[i + 1]
+                array[i + 1] = temp
+        passnum = passnum - 1
+    return array
 
 
 def nextletter(letter):
     if letter == 'a':
-        "t"
+        letterList[0] = 0;
     if letter == 'b':
         "t"
     if letter == 'c':
@@ -195,6 +192,35 @@ def nextletter(letter):
         "t"
     if letter == 'z':
         "t"
+
+def aprobabilities():
+    letterList[0] = 0
+    letterList[1] = 0
+    letterList[2] = 0
+    letterList[3] = 0
+    letterList[4] = 0
+    letterList[5] = 0
+    letterList[6] = 0
+    letterList[7] = 0
+    letterList[9] = 0
+    letterList[10] = 0
+    letterList[11] = 0
+    letterList[12] = 0
+    letterList[13] = 0
+    letterList[14] = 0
+    letterList[15] = 0
+    letterList[16] = 0
+    letterList[17] = 0
+    letterList[18] = 0
+    letterList[19] = 0
+    letterList[20] = 0
+    letterList[21] = 0
+    letterList[22] = 0
+    letterList[23] = 0
+    letterList[24] = 0
+    letterList[25] = 0
+
+
 
 
 function()
