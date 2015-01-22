@@ -32,7 +32,7 @@ class Letter:
 
 
     def __str__(self):
-        return self.character + ": " + str(self.probability)
+        return self.character
 
 
     def __gt__(self, other):
@@ -56,9 +56,6 @@ def isvowel(a):
         return True
     return False
 
-
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
-           'v', 'w', 'x', 'y', 'z']
 
 probabilities = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                  0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
@@ -91,6 +88,8 @@ y = Letter('y', 0.0)
 z = Letter('z', 0.0)
 
 letterList = [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z]
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+           'w', 'x', 'y', 'z']
 
 vowels = ['a', 'e', 'i', 'o', 'u']
 
@@ -100,27 +99,138 @@ consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', '
 
 def function():
     length = random.randrange(4, 8)
-    print(letterList[1])
+
     word = ''
     for i in range(0, length):
         value = random.random()
+        print(str(value))
         if i == 0:
-            letter = letters[random.randrange(0, 25)]
-        elif isconsonant(letter):
-            letter = vowels[random.randrange(0, len(vowels))]
-        elif isvowel(letter):
-            letter = consonants[random.randrange(0, len(consonants))]
+            letter = str(letterList[random.randrange(0, 25)])
+        else:
+            nextletter(letter)
+            index = 0
+            while index < len(letterList):
+                if letterList[index] < value:
+                    letter = letters[index]
+                index += 1
+
         word += letter
     print(word + '\n')
 
-    for letter in shortbubblesort(letterList):
-        print(letter.character + ": " + str(letter.probability))
-    return None
-
 
 def func():
-    for letter in letters:
+    for letter in letterList:
         print(letter + " Vowel: " + str(isvowel(letter)) + " Consonant: " + str(isconsonant(letter)))
+
+
+"0.038 for each letter will equally divide 1 over each letter"
+def nextletter(letter):
+    if letter == 'a':
+        setprobabilities(0.0, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04,
+                         0.04, 0.04, 0.04, 0.04, 0.04, 0.04)
+    if letter == 'b':
+        setprobabilities(0.0, 0.0, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'c':
+        setprobabilities(0.0, .1, 0.0, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'd':
+        setprobabilities(0.0, .1, .1, 0.0, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'e':
+        setprobabilities(0.0, .1, .1, .2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'f':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'g':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'h':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'i':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'j':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'k':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'l':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'm':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'n':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'o':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'p':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'q':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'r':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 's':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 't':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'u':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'v':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'w':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'x':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'y':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    if letter == 'z':
+        setprobabilities(0.0, .1, .1, .2, .1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                         0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+
+def setprobabilities(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26):
+    letterList[0] = p1
+    letterList[1] = p2
+    letterList[2] = p3
+    letterList[3] = p4
+    letterList[4] = p5
+    letterList[5] = p6
+    letterList[6] = p7
+    letterList[7] = p8
+    letterList[8] = p9
+    letterList[9] = p10
+    letterList[10] = p11
+    letterList[11] = p12
+    letterList[12] = p13
+    letterList[13] = p14
+    letterList[14] = p15
+    letterList[15] = p16
+    letterList[16] = p17
+    letterList[17] = p18
+    letterList[18] = p19
+    letterList[19] = p20
+    letterList[20] = p21
+    letterList[21] = p22
+    letterList[22] = p23
+    letterList[23] = p24
+    letterList[24] = p25
+    letterList[25] = p26
 
 
 def shortbubblesort(alist):
@@ -135,91 +245,8 @@ def shortbubblesort(alist):
                 temp = array[i]
                 array[i] = array[i + 1]
                 array[i + 1] = temp
-        passnum = passnum - 1
+        passnum -= 1
     return array
-
-
-def nextletter(letter):
-    if letter == 'a':
-        letterList[0] = 0;
-    if letter == 'b':
-        "t"
-    if letter == 'c':
-        "t"
-    if letter == 'd':
-        "t"
-    if letter == 'e':
-        "t"
-    if letter == 'f':
-        "t"
-    if letter == 'g':
-        "t"
-    if letter == 'h':
-        "t"
-    if letter == 'i':
-        "t"
-    if letter == 'j':
-        "t"
-    if letter == 'k':
-        "t"
-    if letter == 'l':
-        "t"
-    if letter == 'm':
-        "t"
-    if letter == 'n':
-        "t"
-    if letter == 'o':
-        "t"
-    if letter == 'p':
-        "t"
-    if letter == 'q':
-        "t"
-    if letter == 'r':
-        "t"
-    if letter == 's':
-        "t"
-    if letter == 't':
-        "t"
-    if letter == 'u':
-        "t"
-    if letter == 'v':
-        "t"
-    if letter == 'w':
-        "t"
-    if letter == 'x':
-        "t"
-    if letter == 'y':
-        "t"
-    if letter == 'z':
-        "t"
-
-def aprobabilities():
-    letterList[0] = 0
-    letterList[1] = 0
-    letterList[2] = 0
-    letterList[3] = 0
-    letterList[4] = 0
-    letterList[5] = 0
-    letterList[6] = 0
-    letterList[7] = 0
-    letterList[9] = 0
-    letterList[10] = 0
-    letterList[11] = 0
-    letterList[12] = 0
-    letterList[13] = 0
-    letterList[14] = 0
-    letterList[15] = 0
-    letterList[16] = 0
-    letterList[17] = 0
-    letterList[18] = 0
-    letterList[19] = 0
-    letterList[20] = 0
-    letterList[21] = 0
-    letterList[22] = 0
-    letterList[23] = 0
-    letterList[24] = 0
-    letterList[25] = 0
-
 
 
 
